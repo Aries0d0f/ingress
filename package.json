@@ -2,9 +2,11 @@
 	"name": "ingress",
 	"private": true,
 	"scripts": {
+		"build": "sh scripts/build.sh",
 		"dev": "wrangler dev",
 		"test": "cargo test",
-		"deploy": "wrangler deploy"
+		"deploy": "wrangler deploy",
+		"preview": "wrangler preview"
 	},
 	"devDependencies": {
 		"wrangler": "^4.158.0"

@@ -1,0 +1,6 @@
+# Pinned toolchain for local builds and CI; rustup installs it on demand.
+[toolchain]
+channel = "1.99.1"
+targets = ["wasm32-unknown-unknown"]
+components = ["rustfmt", "clippy"]
+profile = "minimal"
