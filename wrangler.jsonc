@@ -1,0 +1,31 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	// Takes over the existing `ingress` Worker name, and with it the live domains.
+	"name": "ingress",
+	"main": "build/index.js",
+	"compatibility_date": "2026-10-27",
+	"build": {
+		"command": "cargo install -q worker-build && worker-build --release"
+	},
+	"observability": {
+		"enabled": true,
+		"logs": {
+			"enabled": true,
+			"invocation_logs": true
+		},
+		"traces": {
+			"enabled": true
+		}
+	},
+	// Domains are attached in the dashboard today; declare them here once confirmed.
+	// "routes": [
+	// 	{ "pattern": "aries0d0f.me", "custom_domain": true },
+	// 	{ "pattern": "ip.aries0d0f.me", "custom_domain": true }
+	// ],
+	"services": [
+		{ "binding": "SITE", "service": "personal-website" },
+		{ "binding": "IP_LOOKUP", "service": "ip-lookup" }
+	],
+	// Set via `wrangler secret put`; `.dev.vars` locally.
+	"secrets": { "required": ["GA4_MEASUREMENT_ID", "GA4_API_SECRET"] }
+}

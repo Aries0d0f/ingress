@@ -1,0 +1,12 @@
+{
+	"name": "ingress",
+	"private": true,
+	"scripts": {
+		"dev": "wrangler dev",
+		"test": "cargo test",
+		"deploy": "wrangler deploy"
+	},
+	"devDependencies": {
+		"wrangler": "^4.158.0"
+	}
+}
