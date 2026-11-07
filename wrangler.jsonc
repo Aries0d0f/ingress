@@ -17,6 +17,7 @@
 			"enabled": true
 		}
 	},
+	"placement": { "mode": "smart" },
 	// Domains are attached in the dashboard today; declare them here once confirmed.
 	// "routes": [
 	// 	{ "pattern": "aries0d0f.me", "custom_domain": true },
