@@ -37,9 +37,11 @@ jobs:
 
       - run: bun run test
 
-      # wrangler deploy runs scripts/build.sh via wrangler.jsonc's build.command.
       - if: github.event_name == 'push'
-        run: bun run deploy
+        run: |
+          subject="$(printf '%s' "$COMMIT_MESSAGE" | head -n 1 | cut -c 1-100)"
+          bun run deploy --message "$subject" --tag "${GITHUB_SHA::7}"
         env:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
